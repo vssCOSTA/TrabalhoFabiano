@@ -1,17 +1,19 @@
 export default class Api {
-  static fazer(url, method = "GET", body = null) {
-    fetch(url, {
-      method: method,
+  static async fazer(endpoint, method = "GET", body = null) {
+    const options = {
+      method,
       headers: {
-        Accept: "application/json",
         "Content-Type": "application/json",
       },
+    };
 
-      body: JSON.stringify({
-        body,
-      }),
-    }).then((response) => {
-      return response;
-    });
+    if (body) {
+      options.body = JSON.stringify(body);
+    }
+
+    const response = await fetch(endpoint, options);
+    const data = await response.json();
+
+    return data;
   }
 }

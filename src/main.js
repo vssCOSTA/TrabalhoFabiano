@@ -9,7 +9,7 @@ import ViewCarrinho from "./components/ViewCarrinho.vue";
 
 const routes = [
   { path: "/", component: PaginaInicial },
-  { path: "/produto/id", component: DetalheProduto },
+  { path: "/produto/:id", component: DetalheProduto, props: true },
   {path: "/carrinho", component:ViewCarrinho}
 ];
 
